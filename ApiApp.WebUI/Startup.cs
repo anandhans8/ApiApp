@@ -56,10 +56,10 @@ namespace ApiApp.WebUI
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
 
             // Customise default API behavour
-            services.Configure<ApiBehaviorOptions>(options =>
-            {
-                options.SuppressModelStateInvalidFilter = true;
-            });
+            // services.Configure<ApiBehaviorOptions>(options =>
+            // {
+            //     options.SuppressModelStateInvalidFilter = true;
+            // });
             
         }
 
@@ -78,12 +78,13 @@ namespace ApiApp.WebUI
             }
 
             // app.UseHttpsRedirection();
-            app.UseMvc(routes =>
-            {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
-            });
+            app.UseMvc();
+            // app.UseMvc(routes =>
+            // {
+            //     routes.MapRoute(
+            //         name: "default",
+            //         template: "{controller}/{action=Index}/{id?}");
+            // });
             
         }
     }
