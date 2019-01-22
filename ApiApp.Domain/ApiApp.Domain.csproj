@@ -1,0 +1,8 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <!--<Import Project="..\ApiApp.CodeAnalysis.targets" />-->
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.2</TargetFramework>
+    <AssemblyName>ApiApp.Domain</AssemblyName>
+    <RootNamespace>ApiApp.Domain</RootNamespace>
+  </PropertyGroup>
+</Project>
