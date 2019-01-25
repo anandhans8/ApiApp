@@ -18,6 +18,7 @@ using ApiApp.Infrastructure;
 using ApiApp.Persistence;
 using ApiApp.WebUI.Filters;
 using System.Reflection;
+using Swashbuckle.AspNetCore.Swagger;
 
 namespace ApiApp.WebUI
 {
@@ -55,6 +56,11 @@ namespace ApiApp.WebUI
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<CreateCustomerCommandValidator>());
 
+            services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new Info { Title = "My API", Version = "v1" });
+                });
+
             // Customise default API behavour
             services.Configure<ApiBehaviorOptions>(options =>
             {
@@ -76,6 +82,12 @@ namespace ApiApp.WebUI
                 app.UseExceptionHandler("/Error");
                 app.UseHsts();
             }
+
+            app.UseSwagger();
+            app.UseSwaggerUI(c =>
+                {
+                    c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
+                });
 
             // app.UseHttpsRedirection();
             app.UseMvc(routes =>
